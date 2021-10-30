@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script>
+var subjectObject = {
+  "Jaipur": {
+    "Delhi":[],
+    "Kurukshetra":[]    
+  },
+  "Delhi": {
+    "Jaipur":[],
+    "Kurukshetra":[]
+  },
+   "Kurukshetra": {
+    "Jaipur":[],
+    "Delhi":[]
+  }
+}
+window.onload = function() {
+  var subjectSel = document.getElementById("subject");
+  var topicSel = document.getElementById("topic");
+ 
+  for (var x in subjectObject) {
+    subjectSel.options[subjectSel.options.length] = new Option(x, x);
+  }
+  subjectSel.onchange = function() {
+    //empty Chapters- and Topics- dropdowns
+    
+    topicSel.length = 1;
+    //display correct values
+    for (var y in subjectObject[this.value]) {
+      topicSel.options[topicSel.options.length] = new Option(y, y);
+    }
+  }
+  topicSel.onchange = function() {
+    //empty Chapters dropdown
+    
+    //display correct values
+  }
+}
+
+function myFunction() {
+window.open("2.html");}
+
+
+
+  
+  
+</script>
+
+</head>   
+<body>
+
+<h1>Select Your Route Here:</h1>
+
+<form name="form1" id="form1">
+From: <select name="subject" id="subject">
+    <option value="" selected="selected">Select Start Location</option>
+  </select>
+  <br><br>
+To: <select name="topic" id="topic">
+    <option value="" selected="selected">Select Destination</option>
+  </select>
+  <br><br>
+<button onclick="myFunction()">Submit</button>
+  <!--<input type="submit" value="Submit"> --> 
+</form>
+
+</body>
+</html>
